@@ -1,0 +1,12 @@
+query FeatchAllAuthors{
+  authors{
+    _id
+    name
+    birthday
+    books{
+      id
+      title
+      description
+    }
+  }
+}

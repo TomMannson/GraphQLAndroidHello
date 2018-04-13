@@ -1,0 +1,16 @@
+apply from: "../../../../gradle/dependencies.gradle"
+
+ext.supportDeps = [
+	dep.appcompat
+]
+
+ext.apolloRuntimeCompileDeps = [
+    dep.supportAnnotations,
+    dep.okHttp,
+]
+
+ext.apolloApiCompileDeps = [
+    dep.jsr305,
+    dep.jsr250,
+		dep.okHttp
+]

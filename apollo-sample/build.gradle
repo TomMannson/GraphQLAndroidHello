@@ -1,0 +1,43 @@
+buildscript {
+  ext.apolloReleaseVersion = '0.4.4-SNAPSHOT'
+
+  dependencies {
+    classpath dep.androidPlugin
+    classpath "com.apollographql.apollo:apollo-gradle-plugin:$apolloReleaseVersion"
+  }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.apollographql.android'
+
+android {
+  compileSdkVersion androidConfig.compileSdkVersion
+  buildToolsVersion androidConfig.buildToolsVersion
+
+  defaultConfig {
+    applicationId "com.example.apollographql.sample"
+    minSdkVersion androidConfig.minSdkVersion
+    targetSdkVersion androidConfig.targetSdkVersion
+  }
+
+  lintOptions {
+    textReport true
+    textOutput 'stdout'
+    ignore 'InvalidPackage', 'GoogleAppIndexingWarning', 'AllowBackup'
+  }
+}
+
+dependencies {
+  provided dep.jsr305
+
+  compile "com.apollographql.apollo:apollo-runtime:$apolloReleaseVersion"
+  compile "com.apollographql.apollo:apollo-android-support:$apolloReleaseVersion"
+  compile "com.apollographql.apollo:apollo-rx2-support:$apolloReleaseVersion"
+  compile dep.appcompat
+  compile dep.okhttpLoggingInterceptor
+  compile dep.recyclerView
+  compile dep.rxandroid
+  compile dep.rxjava2
+
+  testCompile dep.junit
+}
